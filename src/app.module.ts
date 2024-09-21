@@ -9,6 +9,10 @@ import 'dotenv/config';
 import { User } from './users/user.entity';
 import { TagsModule } from './tags/tags.module';
 import { MetaOptionsModule } from './meta-options/meta-options.module';
+import { dir } from 'console';
+import { dirname } from 'path';
+import { Tag } from './tags/tags.entity';
+import { MetaOption } from './meta-options/meta-option.entity';
 
 @Module({
   imports: [
@@ -25,7 +29,8 @@ import { MetaOptionsModule } from './meta-options/meta-options.module';
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        entities: [User],
+        // entities: [User, Tag, MetaOption],
+        autoLoadEntities: true,
         synchronize: true,
         logging: process.env.DB_LOGGING === 'true',
       }),

@@ -8,6 +8,8 @@ import {
   IsString,
   IsUrl,
   Matches,
+  Max,
+  MaxLength,
   MinLength,
   ValidateNested,
 } from 'class-validator';
@@ -24,6 +26,7 @@ export class CreatePostsDto {
   })
   @IsString()
   @MinLength(4)
+  @MaxLength(512)
   @IsNotEmpty()
   title: string;
 
@@ -38,6 +41,7 @@ export class CreatePostsDto {
   })
   @IsString()
   @IsNotEmpty()
+  @MaxLength(256)
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
       'A slug should be all small letters and use only "-" and without spaces. Example: "this-is-a-slug"',
@@ -70,6 +74,7 @@ export class CreatePostsDto {
     example: 'https://example.com/featured-image.jpg',
   })
   @IsOptional()
+  @MaxLength(1024)
   @IsUrl()
   featuredImageUrl?: string;
 
@@ -89,6 +94,7 @@ export class CreatePostsDto {
   @IsArray()
   @IsString({ each: true })
   @MinLength(3, { each: true })
+  @MaxLength(512, { each: true })
   tags?: string[];
 
   @ApiPropertyOptional({

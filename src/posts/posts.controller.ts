@@ -21,8 +21,7 @@ export class PostsController {
     description: 'The post has been successfully created.',
   })
   public createPosts(@Body() createPostsDto: CreatePostsDto) {
-    console.log(createPostsDto);
-    return 'You sent a post request to posts endpoint';
+    return this.postsService.create(createPostsDto);
   }
 
   @Patch()

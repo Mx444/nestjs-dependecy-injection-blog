@@ -10,15 +10,10 @@ Content-Type: application/json
 "schema":"{ \"type\": \"object\", \"properties\": { \"name\": { \"type\": \"string\" }, \"age\": { \"type\": \"number\" } } }",
 "featuredImageUrl": "https://example.com/image.jpg",
 "publishOn": "2021-01-01T00:00:00.000Z",
-"tags": ["tag1", "tag2"],
-"metaOptions":[
+//"tags": ["tag1", "tag2"],
+"metaOptions":
     {
-        "key": "key1",
-        "value": "value1"
-    },
-    {
-        "key": "key2",
-        "value": "value2"
+        "metaValue": "{\"sidebarEnabled\":true, \"footerActive\":true}"
     }
-]
+    
 }

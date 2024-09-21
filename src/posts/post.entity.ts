@@ -50,7 +50,7 @@ export class Post {
 
   tags?: string[];
 
-  @OneToOne(() => MetaOption)
+  @OneToOne(() => MetaOption, { cascade: true })
   @JoinColumn()
   metaOptions?: MetaOption;
 }

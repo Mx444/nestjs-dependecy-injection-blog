@@ -4,7 +4,7 @@ Content-Type: application/json
 {
 "title": "Post title",
 "postType": "post",
-"slug": "post-title",
+"slug": "post-title1",
 "status": "draft",
 "content": "Post content",
 "schema":"{ \"type\": \"object\", \"properties\": { \"name\": { \"type\": \"string\" }, \"age\": { \"type\": \"number\" } } }",

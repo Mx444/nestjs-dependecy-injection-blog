@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import 'dotenv/config';
 import { User } from './users/user.entity';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { User } from './users/user.entity';
         logging: process.env.DB_LOGGING === 'true',
       }),
     }),
+    TagsModule,
   ],
 
   controllers: [AppController],

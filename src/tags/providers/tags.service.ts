@@ -23,4 +23,9 @@ export class TagsService {
     });
     return result;
   }
+
+  public async delete(id: number) {
+    await this.tagRepository.delete(id);
+    return { message: 'Tag deleted successfully', id };
+  }
 }

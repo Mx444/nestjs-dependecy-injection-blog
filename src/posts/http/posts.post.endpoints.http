@@ -2,9 +2,9 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-"title": "Post title1",
+"title": "Post title123",
 "postType": "post",
-"slug": "post-title1",
+"slug": "post-title123",
 "status": "draft",
 "content": "Post content",
 "schema":"{ \"type\": \"object\", \"properties\": { \"name\": { \"type\": \"string\" }, \"age\": { \"type\": \"number\" } } }",
@@ -16,6 +16,6 @@ Content-Type: application/json
         "metaValue": "{\"sidebarEnabled\":true, \"footerActive\":true}"
     },
     "authorId":1,
-    "tags":[1]
+    "tags":[1,2]
     
 }

@@ -13,6 +13,7 @@ import { dir } from 'console';
 import { dirname } from 'path';
 import { Tag } from './tags/tags.entity';
 import { MetaOption } from './meta-options/meta-option.entity';
+import { TagsService } from './tags/providers/tags.service';
 
 @Module({
   imports: [
@@ -40,6 +41,6 @@ import { MetaOption } from './meta-options/meta-option.entity';
   ],
 
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, TagsService],
 })
 export class AppModule {}

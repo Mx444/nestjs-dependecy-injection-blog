@@ -39,7 +39,14 @@ export class PostsService {
     return await this.postRepository.save(post);
   }
 
-  public async findAll(userId: number) {}
+  public async findAll(userId: number) {
+    return await this.postRepository.find({
+      relations: {
+        metaOptions: true,
+        //author: true
+      },
+    });
+  }
 
   public async delete(id: number) {
     await this.postRepository.delete(id);

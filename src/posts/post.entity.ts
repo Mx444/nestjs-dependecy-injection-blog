@@ -60,6 +60,6 @@ export class Post {
   })
   metaOptions?: MetaOption;
 
-  @ManyToOne(() => User, (user) => user.posts)
+  @ManyToOne(() => User, (user) => user.posts, { eager: true })
   author: User;
 }

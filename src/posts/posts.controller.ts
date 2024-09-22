@@ -21,7 +21,9 @@ export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Get('/:userId?')
-  public getPosts(@Param('userId') userId: string) {}
+  public getPosts(@Param('userId') userId: string) {
+    return this.postsService.findAll(parseInt(userId));
+  }
 
   @Post()
   @ApiOperation({ summary: 'Create a new post' })

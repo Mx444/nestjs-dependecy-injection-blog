@@ -45,11 +45,7 @@ export class PostsService {
   }
 
   public async delete(id: number) {
-    const post = await this.postRepository.findOne({ where: { id } });
-
     await this.postRepository.delete(id);
-
-    await this.metaOptionsRepository.delete(post.metaOptions.id);
 
     return { message: 'Post deleted successfully', id };
   }

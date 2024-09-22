@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { CreatePostsDto } from '../dtos/create-posts.dto';
 import { Post } from '../post.entity';
 import { TagsService } from 'src/tags/providers/tags.service';
+import { PatchPostsDto } from '../dtos/patch-posts.dto';
 
 @Injectable()
 export class PostsService {
@@ -53,6 +54,27 @@ export class PostsService {
         //tags: true,
       },
     });
+  }
+
+  public async update(patchPostDto: PatchPostsDto) {
+    let tags = await this.tagService.findMultipleTags(patchPostDto.tags);
+
+    let post = await this.postRepository.findOneBy({
+      id: patchPostDto.id,
+    });
+
+    post.title = patchPostDto.title ?? post.title;
+    post.content = patchPostDto.content ?? post.content;
+    post.status = patchPostDto.status ?? post.status;
+    post.postType = patchPostDto.postType ?? post.postType;
+    post.slug = patchPostDto.slug ?? post.slug;
+    post.featuredImageUrl =
+      patchPostDto.featuredImageUrl ?? post.featuredImageUrl;
+    post.publishOn = patchPostDto.publishOn ?? post.publishOn;
+
+    post.tags = tags;
+
+    return await this.postRepository.save(post);
   }
 
   public async delete(id: number) {

@@ -41,9 +41,8 @@ export class PostsController {
     status: 200,
     description: 'The post has been successfully updated.',
   })
-  public updatePosts(@Body() patchPostsDto: PatchPostsDto) {
-    console.log(patchPostsDto);
-    return 'You sent a patch request to posts endpoint';
+  public updatePosts(@Body() patchPostDto: PatchPostsDto) {
+    return this.postsService.update(patchPostDto);
   }
 
   @Delete()

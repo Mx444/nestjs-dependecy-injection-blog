@@ -2,6 +2,13 @@ PATCH http://localhost:3000/posts/
 Content-Type: application/json
 
 {
-    "id": 1,
-    "postType": "post"
+    "id": 17,
+    "title": "NestJS TypeScript",
+    "postType": "post",
+    "status": "published",
+    "content": "TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language.",
+    "metaOptions":{
+    "metaValue":"{\"sidebarEnabled\":true,\"commentsEnabled\":true,\"showInFeed\":true}"
+    },
+    "tags":[1,2]
 }

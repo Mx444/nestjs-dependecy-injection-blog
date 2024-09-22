@@ -8,10 +8,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class TagsService {
   constructor(
     @InjectRepository(Tag)
-    private readonly tagsRepository: Repository<Tag>,
+    private readonly tagRepository: Repository<Tag>,
   ) {}
   public async create(createTagDto: CreateTagDto) {
-    let tag = this.tagsRepository.create(createTagDto);
-    return await this.tagsRepository.save(tag);
+    let tag = this.tagRepository.create(createTagDto);
+    return await this.tagRepository.save(tag);
   }
 }

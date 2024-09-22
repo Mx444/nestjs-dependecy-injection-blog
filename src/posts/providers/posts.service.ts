@@ -50,6 +50,7 @@ export class PostsService {
       relations: {
         metaOptions: true,
         //author: true
+        //tags: true,
       },
     });
   }

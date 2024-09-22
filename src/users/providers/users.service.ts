@@ -1,15 +1,16 @@
 import {
-  Injectable,
+  ConflictException,
   forwardRef,
   Inject,
-  ConflictException,
+  Injectable,
 } from '@nestjs/common';
-import { GetUsersParamDto } from '../dtos/get-users-param.dto';
-import { AuthService } from 'src/auth/providers/auth.service';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AuthService } from 'src/auth/providers/auth.service';
 import { Repository } from 'typeorm';
-import { User } from '../user.entity';
+
 import { CreateUserDto } from '../dtos/create-user.dto';
+import { GetUsersParamDto } from '../dtos/get-users-param.dto';
+import { User } from '../user.entity';
 
 /**
  * Class to connect Users table and perform business operations
@@ -65,14 +66,9 @@ export class UsersService {
   }
 
   /**
-   *The method to get user by id
-   * @param id
-   * @returns
+   * Public method used to find one user using the ID of the user
    */
-  public findOneById(id: string) {
-    return {
-      name: 'John Doe',
-      email: 'jonh@doe.com',
-    };
+  public async findOneById(id: number) {
+    return await this.userRepository.findOneBy({ id });
   }
 }

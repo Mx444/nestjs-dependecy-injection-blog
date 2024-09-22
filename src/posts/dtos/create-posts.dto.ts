@@ -1,23 +1,10 @@
-import {
-  IsArray,
-  IsEnum,
-  IsISO8601,
-  IsJSON,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  IsUrl,
-  Matches,
-  Max,
-  MaxLength,
-  MinLength,
-  ValidateNested,
-} from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsArray, IsEnum, IsInt, IsISO8601, IsJSON, IsNotEmpty, IsOptional, IsString, IsUrl, Matches, Max, MaxLength, MinLength, ValidateNested } from 'class-validator';
+
+import { CreatePostMetaOptionsDto } from '../../meta-options/dtos/create-post-metaoptions.dto';
 import { postStatus } from '../enums/postStatus.enum';
 import { postType } from '../enums/postType.enum';
-import { CreatePostMetaOptionsDto } from '../../meta-options/dtos/create-post-metaoptions.dto';
-import { Type } from 'class-transformer';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreatePostsDto {
   @ApiProperty({
@@ -117,4 +104,14 @@ export class CreatePostsDto {
   @ValidateNested({ each: true })
   @Type(() => CreatePostMetaOptionsDto)
   metaOptions?: CreatePostMetaOptionsDto | null;
+
+  @ApiProperty({
+    type: 'integer',
+    required: true,
+    description: 'The author id of the post',
+    example: 1,
+  })
+  @IsNotEmpty()
+  @IsInt()
+  authorId: number;
 }

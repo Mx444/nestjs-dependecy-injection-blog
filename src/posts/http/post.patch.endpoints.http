@@ -2,7 +2,7 @@ PATCH http://localhost:3000/posts/
 Content-Type: application/json
 
 {
-    "id": 17,
+    "id": 18,
     "title": "NestJS TypeScript",
     "postType": "post",
     "status": "published",
@@ -10,5 +10,5 @@ Content-Type: application/json
     "metaOptions":{
     "metaValue":"{\"sidebarEnabled\":true,\"commentsEnabled\":true,\"showInFeed\":true}"
     },
-    "tags":[1,2]
+    "tags":[1,3]
 }

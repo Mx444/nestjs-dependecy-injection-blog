@@ -28,4 +28,9 @@ export class TagsService {
     await this.tagRepository.delete(id);
     return { message: 'Tag deleted successfully', id };
   }
+
+  public async softDelete(id: number) {
+    await this.tagRepository.softDelete(id);
+    return { message: 'Tag soft deleted successfully', id };
+  }
 }

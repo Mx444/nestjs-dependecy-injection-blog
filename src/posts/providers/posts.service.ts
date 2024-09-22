@@ -1,10 +1,12 @@
 import { Body, Injectable } from '@nestjs/common';
-import { UsersService } from 'src/users/providers/users.service';
-import { CreatePostsDto } from '../dtos/create-posts.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Post } from '../post.entity';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
+import { UsersService } from 'src/users/providers/users.service';
+import { Repository } from 'typeorm';
+
+import { CreatePostsDto } from '../dtos/create-posts.dto';
+import { Post } from '../post.entity';
+
 @Injectable()
 export class PostsService {
   constructor(
@@ -38,9 +40,17 @@ export class PostsService {
 
   public async findAll(userId: string) {
     const user = this.usersService.findOneById(userId);
-
     let posts = await this.postRepository.find();
-
     return posts;
+  }
+
+  public async delete(id: number) {
+    const post = await this.postRepository.findOne({ where: { id } });
+
+    await this.postRepository.delete(id);
+
+    await this.metaOptionsRepository.delete(post.metaOptions.id);
+
+    return { message: 'Post deleted successfully', id };
   }
 }

@@ -1,8 +1,19 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { PostsService } from './providers/posts.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+
 import { CreatePostsDto } from './dtos/create-posts.dto';
 import { PatchPostsDto } from './dtos/patch-posts.dto';
+import { PostsService } from './providers/posts.service';
 
 @Controller('posts')
 @ApiTags('Posts')
@@ -33,5 +44,10 @@ export class PostsController {
   public updatePosts(@Body() patchPostsDto: PatchPostsDto) {
     console.log(patchPostsDto);
     return 'You sent a patch request to posts endpoint';
+  }
+
+  @Delete()
+  public deletePost(@Query('id', ParseIntPipe) id: number) {
+    return this.postsService.delete(id);
   }
 }

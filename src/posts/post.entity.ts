@@ -1,3 +1,4 @@
+import { MetaOption } from 'src/meta-options/meta-option.entity';
 import {
   Column,
   Entity,
@@ -5,10 +6,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
 import { CreatePostMetaOptionsDto } from '../meta-options/dtos/create-post-metaoptions.dto';
-import { postType } from './enums/postType.enum';
 import { postStatus } from './enums/postStatus.enum';
-import { MetaOption } from 'src/meta-options/meta-option.entity';
+import { postType } from './enums/postType.enum';
+
 @Entity('posts')
 export class Post {
   @PrimaryGeneratedColumn()
